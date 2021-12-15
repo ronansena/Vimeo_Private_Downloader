@@ -26,8 +26,7 @@ try:
                 v = Vimeo(
                     
                     #Put your embedded URL here 
-                    embedded_on="https://link_for_embedded_site.com/Vdfsd/modulo",
-                    
+                    embedded_on="https://link_for_embedded_site.com/Vdfsd/modulo",                    
                     url="https://player.vimeo.com/video/"+idVideo,
                     cookies=cookies    
                 )

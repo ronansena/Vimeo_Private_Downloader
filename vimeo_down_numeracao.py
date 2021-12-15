@@ -12,9 +12,11 @@ try:
     pathFilesList = "/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/"
     #folder to save the downloads
     pathFilesDownload = "/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/Video"
-
+    #Number init for the download videos
+    count = 0
     with open(pathFilesList+"listVideos.txt", 'r') as objFile:
-        for objFileLine in objFile:                     
+        for objFileLine in objFile:   
+            count+= 1                
             arrayLine = objFileLine.split(",")
             idVideo = arrayLine[0].strip().replace("\n","") 
             nomeVideo = arrayLine[1].strip().replace("\n","").replace(" ","_").replace("(","_").replace(")","_").replace("!","")
@@ -38,7 +40,7 @@ try:
             try:
                 best_stream = v.best_stream
                 mp4_url = best_stream.direct_url      
-                best_stream.title = remove_accents(nomeVideo)                
+                best_stream.title = remove_accents(count+"_"+nomeVideo)                
                 ## Download
                 try:
                     best_stream.download(download_directory=pathFilesDownload)                        
