@@ -9,22 +9,25 @@ try:
     arrayLine = []
     #In this path you must create the file listVideos.txt with the list of the download codes.
     #Also will be create the file logErro.txt automatically by the app in case of errors.
-    pathFilesList = "/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/"
+    pathFilesList = "ADD_PATH_HERE"
     #folder to save the downloads
-    pathFilesDownload = "/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/Video"
+    pathFilesDownload = "ADD_PATH_HERE"
 
     with open(pathFilesList+"listVideos.txt", 'r') as objFile:
         for objFileLine in objFile:                     
             arrayLine = objFileLine.split(",")
             idVideo = arrayLine[0].strip().replace("\n","") 
             nomeVideo = arrayLine[1].strip().replace("\n","").replace(" ","_").replace("(","_").replace(")","_").replace("!","")
-            #In here put the token of the site     
+            #Put your token here    
             cookies = """
-                ADPycduHZQUBZ9rwk9GPRcwHjSMLJdWTWEJoSu4QsZ-Sc8KUPa4YzmkjWbrmcfMpRHOb4PeF-IelnYg65sLE9d4SfHtXFGJ_cg
+                ADD_YOUR_TOKEN_HERE_ycDSFDSJLKHSDFHJSDHNFKJDHSFKJHSDKJFHJKDSHFJNKJHNJHSDJKFHKSDJHFKJHKJSHDFKJHKJ
             """.strip()
             try:
                 v = Vimeo(
-                    embedded_on="https://programadetestesequalidade.club.hotmart.com/lesson/V4Vr2ax842/introducao-ao-modulo",
+                    
+                    #Put your embedded URL here 
+                    embedded_on="https://link_for_embedded_site.com/Vdfsd/modulo",
+                    
                     url="https://player.vimeo.com/video/"+idVideo,
                     cookies=cookies    
                 )
