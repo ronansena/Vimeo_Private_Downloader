@@ -7,12 +7,17 @@ def remove_accents(input_str):
 
 try:
     arrayLine = []
-    with open("/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/listVideos.txt", 'r') as objFile:
+    #In the path put on the variable pathFiles you must create the file listVideos.txt with the list of the download codes.
+    pathFiles = "/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/"
+    #folder to save the downloads
+    pathFilesDownload = "/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/Video"
+    
+    with open(pathFiles+"listVideos.txt", 'r') as objFile:
         for objFileLine in objFile:                     
             arrayLine = objFileLine.split(",")
             idVideo = arrayLine[0].strip().replace("\n","") 
             nomeVideo = arrayLine[1].strip().replace("\n","").replace(" ","_").replace("(","_").replace(")","_").replace("!","")
-
+            #In here put the token of the site     
             cookies = """
                 ADPycduHZQUBZ9rwk9GPRcwHjSMLJdWTWEJoSu4QsZ-Sc8KUPa4YzmkjWbrmcfMpRHOb4PeF-IelnYg65sLE9d4SfHtXFGJ_cg
             """.strip()
@@ -23,7 +28,7 @@ try:
                     cookies=cookies    
                 )
             except Exception as exception:
-                with open("/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/logErro.txt", 'a') as fileLogErroObj:
+                with open(pathFiles+"logErro.txt", 'a') as fileLogErroObj:
                         fileLogErroObj.write(str(exception))
                         fileLogErroObj.write("\n")
                         print(exception)
@@ -31,19 +36,18 @@ try:
             try:
                 best_stream = v.best_stream
                 mp4_url = best_stream.direct_url      
-                best_stream.title = remove_accents(nomeVideo)
-
+                best_stream.title = remove_accents(nomeVideo)                
                 ## Download
                 try:
-                    best_stream.download()
+                    best_stream.download(download_directory=pathFilesDownload)                        
                 except Exception as exception:
-                    with open("/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/logErro.txt", 'a') as fileLogErroObj:
+                    with open(pathFiles+"logErro.txt", 'a') as fileLogErroObj:
                             fileLogErroObj.write(str(exception))
                             fileLogErroObj.write("\n")
                             print(exception)
                             continue
             except Exception as exception:
-                 with open("/home/kaus/CODE/PYTHON/Download_Vimeo_Protected/logErro.txt", 'a') as fileLogErroObj:
+                 with open(pathFiles+"logErro.txt", 'a') as fileLogErroObj:
                             fileLogErroObj.write(str(exception))
                             fileLogErroObj.write("\n")
                             print(exception)
