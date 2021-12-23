@@ -16,8 +16,8 @@ try:
     with open(pathFilesList+"listVideos.txt", 'r') as objFile:
         for objFileLine in objFile:                     
             arrayLine = objFileLine.split(",")
-            idVideo = arrayLine[0].strip().replace("\n","") 
-            nomeVideo = arrayLine[1].strip().replace("\n","").replace(" ","_").replace("(","_").replace(")","_").replace("!","")
+            idVideo = arrayLine[1].strip().replace("\n","") 
+            nomeVideo = arrayLine[0].strip().replace("\n","").replace(" ","_").replace("(","_").replace(")","_").replace("!","")
             #Put your token here    
             cookies = """
                 ADD_YOUR_TOKEN_HERE_ycDSFDSJLKHSDFHJSDHNFKJDHSFKJHSDKJFHJKDSHFJNKJHNJHSDJKFHKSDJHFKJHKJSHDFKJHKJ
